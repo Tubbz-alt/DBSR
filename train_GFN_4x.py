@@ -15,8 +15,8 @@ import os
 from os.path import join
 import torch
 from torch.utils.data import DataLoader
-from DBSR.datasets.dataset_hf5 import DataSet
-from DBSR.networks.GFN_G3D_4x import Net
+from datasets.dataset_hf5 import DataSet
+from networks.GFN_G3D_4x import Net
 import random
 import re
 
