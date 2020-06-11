@@ -208,7 +208,6 @@ class Net(nn.Module):
         self.reconstructMoudle = self._make_net(_ReconstructMoudle)
 
     def forward(self, x, gated, isTest):
-        print(f"data range is {x.data.max() - x.data.min()}")
         if isTest == True:
             origin_size = x.size()
             input_size = (math.ceil(origin_size[2] / 4) * 4, math.ceil(origin_size[3] / 4) * 4)
