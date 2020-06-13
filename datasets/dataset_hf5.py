@@ -19,7 +19,7 @@ def is_image_file(filename):
 class DataValSet(data.Dataset):
     def __init__(self, root_dir):
         # one input & ground truth
-        self.input_dir = join(root_dir, 'LR_Blur')
+        self.input_dir = join(root_dir, 'LR_Blur_Noise')
         self.sr_dir = join(root_dir, 'HR')
 
         # Online Loading
