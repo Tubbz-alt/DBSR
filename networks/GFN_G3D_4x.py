@@ -200,8 +200,8 @@ class Net(nn.Module):
     def __init__(self, rgb_range):
         super(Net, self).__init__()
         self.deblurMoudle = self._make_net(_DeblurringMoudle)
-        self.srMoudle_first = _SRMoudle(block_num=4, in_channel=3)
-        self.srMoudle_second = _SRMoudle(block_num=4, in_channel=64)
+        self.srMoudle_first = _SRMoudle(block_num=6, in_channel=3)
+        self.srMoudle_second = _SRMoudle(block_num=6, in_channel=64)
         self.denoiseMoudle = RIDNET(rgb_range=rgb_range, block_num=4)
         self.gateMoudle_first = self._make_net(_GateMoudle)
         self.gateMoudle_second = self._make_net(_GateMoudle)
