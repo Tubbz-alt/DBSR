@@ -65,7 +65,6 @@ def test(test_gen, model, criterion, SR_dir, opt):
             _, _, sr = model(LR_Blur, gated_Tensor, test_Tensor)
             # modify
             sr = torch.clamp(sr, min=0, max=1)
-            print(f"SR shape is {sr.shape} hr shape is {HR.shape}")
             torch.cuda.synchronize(device)  # wait for CPU & GPU time syn
             evalation_time = time.perf_counter() - start_time  # ---------finish an image
             med_time.append(evalation_time)
