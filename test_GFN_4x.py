@@ -77,6 +77,7 @@ def test(test_gen, model, criterion, SR_dir, opt):
             psnr = 10 * log10(1 / mse)
             ssim = structural_similarity(sr[0].permute(1, 2, 0).cpu().numpy(), HR[0].permute(1, 2, 0).cpu().numpy(),
                                          multichannel=True)
+            print(f"PSNR is {psnr} SSIM is {ssim}")
             avg_psnr += psnr
             avg_ssim += ssim
 
