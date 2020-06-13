@@ -98,7 +98,6 @@ if __name__ == '__main__':
     parser.add_argument('--dataset', required=True, help='Path of the validation dataset')
     parser.add_argument("--final_model", default="/model", type=str)
     parser.add_argument("--intermediate_process", default="", type=str, help="Test on intermediate pkl (default: none)")
-    # os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
     test_set = [
         {'gated': False},
@@ -111,7 +110,7 @@ if __name__ == '__main__':
     isexists = os.path.exists(SR_dir)
     if not isexists:
         os.makedirs(SR_dir)
-    print("The results of testing images sotre in {}.".format(SR_dir))
+    print("The results of testing images stored in {}.".format(SR_dir))
 
     testloader = DataLoader(DataValSet(root_val_dir), batch_size=1, shuffle=False, pin_memory=False)
     print("===> Loading model and criterion")
@@ -125,8 +124,7 @@ if __name__ == '__main__':
             model = torch.load(test_pkl, map_location=lambda storage, loc: storage)
             model_test(model, testloader, SR_dir, opt)
         else:
-            print(
-                "It's not a pkl file. Please give a correct pkl folder on command line for example --opt.intermediate_process /models/1/GFN_epoch_25.pkl)")
+            print("--opt.intermediate_process /models/1/GFN_epoch_25.pkl)")
     else:
         test_dir = 'models/'
         test_list = [x for x in sorted(os.listdir(test_dir)) if is_pkl(x)]
