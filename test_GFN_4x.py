@@ -74,7 +74,7 @@ def test(test_gen, model, criterion, SR_dir, opt):
             print("Processing {}".format(iteration))
             mse = criterion(sr, HR)
             psnr = 10 * log10(1 / mse)
-            ssim = structural_similarity(sr, HR)
+            ssim = structural_similarity(sr, HR, multichannel=True)
             avg_psnr += psnr
             avg_ssim += ssim
 
