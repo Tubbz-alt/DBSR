@@ -55,7 +55,8 @@ def adjust_learning_rate(epoch, opt):
 
 
 def checkpoint(step, epoch):
-    model_out_path = "models/{}/GFN_epoch_{}.pkl".format(step, epoch)
+    # model_out_path = "models/{}/GFN_epoch_{}.pkl".format(step, epoch)
+    model_out_path = "/home/zhouje/models/{}/GFN_epoch_{}.pkl".format(step, epoch)
     torch.save(model, model_out_path)
     print("===>Checkpoint saved to {}".format(model_out_path))
 
@@ -109,12 +110,12 @@ if __name__ == '__main__':
     parser.add_argument("--isTest", type=bool, default=False, help="Test or not")
     parser.add_argument('--dataset', required=True, help='Path of the training dataset(.h5)')
     parser.add_argument('--rgb_range', type=int, default=1)
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda:2" if torch.cuda.is_available() else "cpu")
 
     training_settings = [
         {'nEpochs': 25, 'lr': 1e-4, 'step': 7, 'lr_decay': 0.5, 'lambda_db': 0.5, 'gated': False},
         {'nEpochs': 70, 'lr': 1e-4, 'step': 30, 'lr_decay': 0.1, 'lambda_db': 0.5, 'gated': False},
-        {'nEpochs': 70, 'lr': 5e-5, 'step': 25, 'lr_decay': 0.1, 'lambda_db': 0, 'gated': True}
+        {'nEpochs': 100, 'lr': 5e-5, 'step': 25, 'lr_decay': 0.1, 'lambda_db': 0, 'gated': True}
     ]
     opt = parser.parse_args()
     opt.seed = random.randint(1, 10000)
