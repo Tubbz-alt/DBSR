@@ -88,8 +88,8 @@ def train(train_gen, model, criterion, optimizer, epoch, opt):
         optimizer.zero_grad()
         mse.backward()
         optimizer.step()
-        if iteration % 100 == 0:
-            print("===> Epoch[{}]({}/{}): Loss{:.4f};".format(epoch, iteration, len(trainloader), mse.cpu()))
+        # if iteration % 100 == 0:
+        #     print("===> Epoch[{}]({}/{}): Loss{:.4f};".format(epoch, iteration, len(trainloader), mse.cpu()))
     print("===>Epoch{} Complete: Avg loss is :{:4f}".format(epoch, epoch_loss / len(trainloader)))
 
 
