@@ -19,7 +19,7 @@ from datasets.dataset_hf5 import DataSet
 from networks.GFN_G3D_4x import Net
 import random
 import re
-
+from tqdm import tqdm
 
 # Training settings
 
@@ -149,7 +149,7 @@ if __name__ == '__main__':
         opt.lambda_db = training_settings[i - 1]['lambda_db']
         opt.gated = training_settings[i - 1]['gated']
         print(opt)
-        for epoch in range(opt.start_epoch, opt.nEpochs + 1):
+        for epoch in tqdm(range(opt.start_epoch, opt.nEpochs + 1)):
             adjust_learning_rate(epoch - 1, opt)
             random.shuffle(train_sets)
             for j in range(len(train_sets)):
