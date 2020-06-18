@@ -49,7 +49,7 @@ def which_trainingstep_epoch(resume):
 
 def adjust_learning_rate(epoch, opt):
     lr = opt.lr * (opt.lr_decay ** (epoch // opt.step))
-    print(lr)
+    print(f"epoch is {epoch}  lr is {lr}")
     for param_group in optimizer.param_groups:
         param_group['lr'] = lr
 
@@ -115,7 +115,7 @@ if __name__ == '__main__':
     training_settings = [
         {'nEpochs': 25, 'lr': 1e-4, 'step': 7, 'lr_decay': 0.5, 'lambda_db': 0.5, 'gated': False},
         {'nEpochs': 70, 'lr': 1e-4, 'step': 30, 'lr_decay': 0.1, 'lambda_db': 0.5, 'gated': False},
-        {'nEpochs': 100, 'lr': 5e-5, 'step': 25, 'lr_decay': 0.1, 'lambda_db': 0, 'gated': True}
+        {'nEpochs': 100, 'lr': 5e-5, 'step': 25, 'lr_decay': 0.5, 'lambda_db': 0, 'gated': True}
     ]
     opt = parser.parse_args()
     opt.seed = random.randint(1, 10000)
